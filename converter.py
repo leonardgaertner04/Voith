@@ -1,16 +1,31 @@
 def number_to_words(n):
-    """Konvertiert eine Zahl in ihre deutsche Wortform."""
+    """
+    Konvertiert eine Ganzzahl n (0-100) in ihre deutsche Wortform.
+    Args:
+        n (int): Die zu konvertierende Zahl (zwischen 0 und 100).
+    Returns:
+        str: Die deutsche Wortform der Zahl.
+    Raises:
+        ValueError: Falls n nicht im Bereich [0, 100] liegt.
+    """
+    if not 0 <= n <= 100:
+        raise ValueError("Nur Zahlen zwischen 0 und 100 sind erlaubt.")
+  
+    
+    """Sonderfälle für 0 und 1"""
     if n == 0:
         return "null"
     
     if n == 1:
         return "eins"
     
+    """Wortlisten für Einheiten und Zehner"""
     units = ["", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun"]
     teens = ["zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn"]
     tens = ["", "", "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig"]
 
     words = []
+    
     
     if n >= 100:
         words.append(units[n // 100] + "hundert")
@@ -33,19 +48,4 @@ def number_to_words(n):
     
     return ''.join(words)
 
-def get_number():
-    """Fragt den Benutzer nach einer gültigen Zahl."""
-    zahl = input("Bitte gib eine Zahl ein: ")
-    try:
-        zahl = int(zahl)
-    except ValueError:
-        print("Es muss eine ganze Zahl eingegeben werden.")
-        return get_number()
-    if zahl < 0 or zahl > 100:
-            print("Die Zahl muss zwischen 0 und 100 liegen.")
-            return get_number()
-    return zahl
 
-zahl = get_number()
-wort = number_to_words(zahl) 
-print(f"Du hast die Zahl {wort} eingegeben.")
