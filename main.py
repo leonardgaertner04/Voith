@@ -17,6 +17,10 @@ def get_number():
         zahl = input("Bitte gib eine Zahl ein: ")
     return zahl
 
-zahl = get_number()
-wort = number_to_words(zahl) 
-print(f"Du hast die Zahl {wort} eingegeben.")
+def main():
+    zahl = get_number()
+    wort = number_to_words(zahl)
+    print(f"Du hast die Zahl {wort} eingegeben.")
+
+if __name__ == "__main__":
+    main()
